@@ -6,7 +6,7 @@ import 'package:geolocator/geolocator.dart';
 void main() {
   runApp(
       MaterialApp(
-        debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primaryColor: Colors.red,
 
@@ -44,8 +44,8 @@ class _HomepageState extends State<Homepage> {
           // print(position == null ? 'Unknown' : position.latitude.toString() + ', ' + position.longitude.toString());
           if(position != null){
             setState(() {
-              lat = position.latitude.toString();
-              long = position.longitude.toString();
+              lat = position.latitude.toStringAsFixed(2);
+              long = position.longitude.toStringAsFixed(2);
             });
           }
           else{
@@ -58,19 +58,20 @@ class _HomepageState extends State<Homepage> {
 
   }
 
-@override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    lat='Unknown';
-    long='Unknown';
+    lat='0.00';
+    long='0.00';
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text('GPS App for Codein'),
+        title: Text('GPS App'),
         centerTitle: true,
 
       ),
@@ -80,20 +81,32 @@ class _HomepageState extends State<Homepage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("Latitude",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
               Padding(
-                padding: const EdgeInsets.all(10),
-                child: Text(lat,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40),),
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Latitude",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(lat,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40),),
+                    ),
+                  ],
+                ),
               ),
-              Text("Longtitude",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
               Padding(
-                padding: const EdgeInsets.all(10),
-                child: Text(long,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40),),
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Longtitude",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Text(long,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40),),
+                    ),
+                  ],
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: RaisedButton(onPressed: getLocation,child: Text('Start Tracking',style: TextStyle(color: Colors.white),),color: Theme.of(context).primaryColor,),
-              )
             ],
           ),
         ),
