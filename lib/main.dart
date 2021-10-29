@@ -71,12 +71,6 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        leading: GestureDetector(
-          onTap: () { /* Write listener code here */ },
-          child: Icon(
-            Icons.,  // add custom icons also
-          ),
-        ),
         title: Text('GPS App'),
         centerTitle: true,
 
