@@ -8,7 +8,7 @@ void main() {
       MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            primaryColor: Colors.red,
+            primaryColor: Colors.purpleAccent,
 
 
           ),
@@ -71,6 +71,12 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap: () { /* Write listener code here */ },
+          child: Icon(
+            Icons.,  // add custom icons also
+          ),
+        ),
         title: Text('GPS App'),
         centerTitle: true,
 
@@ -79,8 +85,14 @@ class _HomepageState extends State<Homepage> {
       body: Container(
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0,30,0,60),
+                child: SizedBox(
+                    width: 300,
+                    child: Image.asset('assets/home.png')
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Row(
@@ -107,6 +119,23 @@ class _HomepageState extends State<Homepage> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: ElevatedButton(
+                  onPressed: getLocation,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 50),
+                    child: Text('Start Tracking', style: TextStyle(color: Colors.white,fontSize: 18)),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.purple,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50))
+                  ),
+                ),
+              )
             ],
           ),
         ),
